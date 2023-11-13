@@ -29,3 +29,7 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'test'
+    projects: '**/*csproj'
