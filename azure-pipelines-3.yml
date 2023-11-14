@@ -29,7 +29,13 @@ steps:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-- task: DotNetCoreCLI@2
+- task: AzureWebApp@1
   inputs:
-    command: 'test'
-    projects: '**/*csproj'
+    azureSubscription: 'Azure for Students(67ed7119-230c-49af-957c-796965752988)'
+    appType: 'webAppLinux'
+    appName: 'AssessmentWeb'
+    deployToSlotOrASE: true
+    resourceGroupName: 'WebApp'
+    slotName: 'production'
+    package: '$(System.DefaultWorkingDirectory)/**/*.zip'
+    runtimeStack: 'DOTNETCORE|7.0'
